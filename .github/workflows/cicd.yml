@@ -27,7 +27,7 @@ jobs:
 
     - name: Build Backend Image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/habit-backend ./backend
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/habit-backend ./habittracker
         docker push ${{ secrets.DOCKER_USERNAME }}/habit-backend
 
     - name: Build Frontend Image
