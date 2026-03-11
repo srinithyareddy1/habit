@@ -35,8 +35,4 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/habit-frontend ./habit-ui
         docker push ${{ secrets.DOCKER_USERNAME }}/habit-frontend
 
-    - name: Deploy to Kubernetes
-      run: |
-        kubectl apply -f k8s/postgres-deployment.yaml
-        kubectl apply -f k8s/backend-deployment.yaml
-        kubectl apply -f k8s/frontend-deployment.yaml
+   
