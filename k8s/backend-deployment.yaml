@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: habit-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: habit-backend
+  template:
+    metadata:
+      labels:
+        app: habit-backend
+    spec:
+      containers:
+      - name: backend
+        image: srinithyareddy/habit-backend
+        imagePullPolicy: Never
+
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://postgres:5432/habitdb
+        - name: SPRING_DATASOURCE_USERNAME
+          value: postgres
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: Nithya@888
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: habit-backend
+spec:
+  selector:
+    app: habit-backend
+  ports:
+  - port: 8080
+    targetPort: 8080

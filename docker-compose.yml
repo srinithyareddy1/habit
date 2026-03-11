@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+
+  backend:
+    build: ./habittracker
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./habit-ui
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: habitdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Nithya@888
+    ports:
+      - "5433:5432"
